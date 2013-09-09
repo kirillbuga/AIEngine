@@ -1,0 +1,9 @@
+c:\users\кирилл\documents\visual studio 2012\Projects\AIEngine\AIEngine\bin\Debug\AIEngine.exe.config
+c:\users\кирилл\documents\visual studio 2012\Projects\AIEngine\AIEngine\bin\Debug\AIEngine.exe
+c:\users\кирилл\documents\visual studio 2012\Projects\AIEngine\AIEngine\bin\Debug\AIEngine.pdb
+c:\users\кирилл\documents\visual studio 2012\Projects\AIEngine\AIEngine\bin\Debug\GeneticAlgorithm.dll
+c:\users\кирилл\documents\visual studio 2012\Projects\AIEngine\AIEngine\bin\Debug\GeneticAlgorithm.pdb
+c:\users\кирилл\documents\visual studio 2012\Projects\AIEngine\AIEngine\obj\Debug\AIEngine.csprojResolveAssemblyReference.cache
+c:\users\кирилл\documents\visual studio 2012\Projects\AIEngine\AIEngine\obj\Debug\AIEngine.exe
+c:\users\кирилл\documents\visual studio 2012\Projects\AIEngine\AIEngine\obj\Debug\AIEngine.pdb
+c:\users\кирилл\documents\visual studio 2012\Projects\AIEngine\AIEngine\bin\Debug\FizzWare.NBuilder.dll

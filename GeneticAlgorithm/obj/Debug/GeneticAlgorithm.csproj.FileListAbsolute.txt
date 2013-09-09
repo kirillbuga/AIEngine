@@ -1,0 +1,5 @@
+c:\Users\Кирилл\documents\visual studio 2012\Projects\AIEngine\GeneticAlgorithm\bin\Debug\GeneticAlgorithm.dll
+c:\Users\Кирилл\documents\visual studio 2012\Projects\AIEngine\GeneticAlgorithm\bin\Debug\GeneticAlgorithm.pdb
+c:\Users\Кирилл\documents\visual studio 2012\Projects\AIEngine\GeneticAlgorithm\obj\Debug\GeneticAlgorithm.dll
+c:\Users\Кирилл\documents\visual studio 2012\Projects\AIEngine\GeneticAlgorithm\obj\Debug\GeneticAlgorithm.pdb
+c:\Users\Кирилл\documents\visual studio 2012\Projects\AIEngine\GeneticAlgorithm\bin\Debug\FizzWare.NBuilder.dll
