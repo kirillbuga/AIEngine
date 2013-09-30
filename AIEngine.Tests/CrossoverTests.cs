@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using AIEngine.GeneticAlgorithm;
 using FizzWare.NBuilder;
+using GeneticAlgorithm.Implementation.Common;
 using GeneticAlgorithm.Interfaces;
 using NUnit.Framework;
 using FluentAssertions;
@@ -16,7 +16,7 @@ namespace AIEngine.Tests
         [TestCaseSource("Should_CorrectPerformOneDotCrossover_WhenIsCalled_Source")]
         public void Should_CorrectPerformOneDotCrossover_WhenIsCalled(List<IChromosome<int>> input, List<IChromosome<int>> output)
         {
-            var crossover = new Crossover();
+            var crossover = new IntOneDotCrossover();
 
             var result = crossover
                 .Perform(input)
@@ -42,62 +42,62 @@ namespace AIEngine.Tests
             yield return new TestCaseData(
                 new List<IChromosome<int>> // input
                     {
-                        new Chromosome
+                        new IntChromosome
                             {
                                 Gens = new List<IGen<int>>
                                     {
-                                        new Gen(1),
-                                        new Gen(2),
-                                        new Gen(3),
-                                        new Gen(4),
-                                        new Gen(5),
-                                        new Gen(6),
-                                        new Gen(7),
-                                        new Gen(8)
+                                        new IntGen(1),
+                                        new IntGen(2),
+                                        new IntGen(3),
+                                        new IntGen(4),
+                                        new IntGen(5),
+                                        new IntGen(6),
+                                        new IntGen(7),
+                                        new IntGen(8)
                                     }
                             },
-                        new Chromosome
+                        new IntChromosome
                             {
                                 Gens = new List<IGen<int>>
                                     {
-                                        new Gen(9),
-                                        new Gen(10),
-                                        new Gen(11),
-                                        new Gen(12),
-                                        new Gen(13),
-                                        new Gen(14),
-                                        new Gen(15),
-                                        new Gen(16)
+                                        new IntGen(9),
+                                        new IntGen(10),
+                                        new IntGen(11),
+                                        new IntGen(12),
+                                        new IntGen(13),
+                                        new IntGen(14),
+                                        new IntGen(15),
+                                        new IntGen(16)
                                     }
                             }
                     }, new List<IChromosome<int>> // output
                         {
-                            new Chromosome
+                            new IntChromosome
                                 {
                                     Gens = new List<IGen<int>>
                                         {
-                                            new Gen(1),
-                                            new Gen(2),
-                                            new Gen(3),
-                                            new Gen(4),
-                                            new Gen(13),
-                                            new Gen(14),
-                                            new Gen(15),
-                                            new Gen(16)
+                                            new IntGen(1),
+                                            new IntGen(2),
+                                            new IntGen(3),
+                                            new IntGen(4),
+                                            new IntGen(13),
+                                            new IntGen(14),
+                                            new IntGen(15),
+                                            new IntGen(16)
                                         }
                                 },
-                            new Chromosome
+                            new IntChromosome
                                 {
                                     Gens = new List<IGen<int>>
                                         {
-                                            new Gen(9),
-                                            new Gen(10),
-                                            new Gen(11),
-                                            new Gen(12),
-                                            new Gen(5),
-                                            new Gen(6),
-                                            new Gen(7),
-                                            new Gen(8)
+                                            new IntGen(9),
+                                            new IntGen(10),
+                                            new IntGen(11),
+                                            new IntGen(12),
+                                            new IntGen(5),
+                                            new IntGen(6),
+                                            new IntGen(7),
+                                            new IntGen(8)
                                         }
                                 }
                         });

@@ -56,10 +56,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\AIEngine\AIEngine.csproj">
-      <Project>{98cc8a6a-1e02-4937-a2bd-82b7d56672c4}</Project>
-      <Name>AIEngine</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GeneticAlgorithm\GeneticAlgorithm.csproj">
       <Project>{f93e85ea-69c5-4f22-968b-9b0eeaff717d}</Project>
       <Name>GeneticAlgorithm</Name>

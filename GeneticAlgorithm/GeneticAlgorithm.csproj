@@ -42,7 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GeneticAlgorithmCore.cs" />
+    <Compile Include="GeneticAlgorithm.cs" />
+    <Compile Include="Implementation\Common\IntChromosome.cs" />
+    <Compile Include="Implementation\Common\IntOneDotCrossover.cs" />
+    <Compile Include="Implementation\Common\ChessIntFittnessFunction.cs" />
+    <Compile Include="Implementation\Common\IntGen.cs" />
+    <Compile Include="Implementation\Common\IntMutation.cs" />
+    <Compile Include="Implementation\Common\RouletteIntSelection.cs" />
+    <Compile Include="Implementation\Common\ChessIntTerminate.cs" />
+    <Compile Include="Implementation\Neuro\ComplexNeuroCrossover.cs" />
+    <Compile Include="Implementation\Neuro\NeuroChromosome.cs" />
+    <Compile Include="Implementation\Neuro\SimpleOneDotNeuroCrossover.cs" />
+    <Compile Include="Implementation\Neuro\NeuroGen.cs" />
     <Compile Include="Interfaces\IChromosome.cs" />
     <Compile Include="Interfaces\ICrossover.cs" />
     <Compile Include="Interfaces\IFittnessFunction.cs" />
@@ -54,6 +65,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Entities\Common.csproj">
+      <Project>{662d75e3-72c9-4681-ba6f-73e51f848367}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NeuralNetwork\NeuralNetwork.Core.csproj">
+      <Project>{C033B198-7F85-44DE-8792-87A8850AE242}</Project>
+      <Name>NeuralNetwork.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
