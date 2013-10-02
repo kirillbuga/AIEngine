@@ -1,5 +1,4 @@
-﻿using Common.Entities.Profiler;
-using GeneticAlgorithm.Interfaces;
+﻿using GeneticAlgorithm.Interfaces;
 
 namespace GeneticAlgorithm.Implementation.Common
 {
@@ -20,7 +19,6 @@ namespace GeneticAlgorithm.Implementation.Common
                     }
                 }
             }
-            Profiler.Start("Calculate");
             for (int k = 0; k < gensCount; k++)
             {
                 var iValue = chromosome.Gens[k].Value++;
@@ -52,7 +50,6 @@ namespace GeneticAlgorithm.Implementation.Common
                     }
                 }
             }
-            Profiler.Stop();
             if (result == 0)
             {
                 return int.MaxValue;

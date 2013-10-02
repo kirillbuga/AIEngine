@@ -41,13 +41,26 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Agent.cs" />
-    <Compile Include="Exceptions\InvalidArgumentCountException.cs" />
-    <Compile Include="Extensions\Extensions.cs" />
+    <Compile Include="Entities\EnvironmentAgent.cs" />
+    <Compile Include="Entities\EnvironmentOptions.cs" />
+    <Compile Include="Entities\GameEnvironment.cs" />
     <Compile Include="Food.cs" />
+    <Compile Include="ICoordinated.cs" />
     <Compile Include="ILogger.cs" />
     <Compile Include="Logger.cs" />
     <Compile Include="Profiler\Profiler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Vector.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GeneticAlgorithm\GeneticAlgorithm.csproj">
+      <Project>{f93e85ea-69c5-4f22-968b-9b0eeaff717d}</Project>
+      <Name>GeneticAlgorithm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NeuralNetwork\NeuralNetworkCore.csproj">
+      <Project>{c033b198-7f85-44de-8792-87a8850ae242}</Project>
+      <Name>NeuralNetworkCore</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

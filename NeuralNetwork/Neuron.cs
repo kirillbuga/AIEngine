@@ -1,8 +1,8 @@
 ﻿using System;
 using System.Linq;
-using Common.Entities;
+//using Common.Entities;
 
-namespace NeuralNetwork
+namespace NeuralNetworkCore
 {
     public class Neuron
     {
@@ -33,7 +33,7 @@ namespace NeuralNetwork
             set
             {
                 _input = value;
-                Logger.WriteChange(this);
+                //Logger.WriteChange(this);
             }
         }
 
@@ -44,7 +44,7 @@ namespace NeuralNetwork
             set
             {
                 _output = value;
-                Logger.WriteChange(this);
+                //Logger.WriteChange(this);
             }
         }
 
@@ -59,7 +59,7 @@ namespace NeuralNetwork
             set
             {
                 _error = value;
-                Logger.WriteChange(this);
+                //Logger.WriteChange(this);
             }
         }
 

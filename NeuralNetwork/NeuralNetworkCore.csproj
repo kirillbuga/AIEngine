@@ -40,6 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivationFunctions.cs" />
+    <Compile Include="GeneticAlgorithmImplementation\ComplexNeuroCrossover.cs" />
+    <Compile Include="GeneticAlgorithmImplementation\NeuroChromosome.cs" />
+    <Compile Include="GeneticAlgorithmImplementation\NeuroGen.cs" />
+    <Compile Include="GeneticAlgorithmImplementation\SimpleOneDotNeuroCrossover.cs" />
     <Compile Include="IActiovationFunc.cs" />
     <Compile Include="Layer.cs" />
     <Compile Include="Link.cs" />
@@ -49,9 +53,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Common.Entities\Common.csproj">
-      <Project>{662d75e3-72c9-4681-ba6f-73e51f848367}</Project>
-      <Name>Common</Name>
+    <ProjectReference Include="..\GeneticAlgorithm\GeneticAlgorithm.csproj">
+      <Project>{f93e85ea-69c5-4f22-968b-9b0eeaff717d}</Project>
+      <Name>GeneticAlgorithm</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

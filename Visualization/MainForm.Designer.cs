@@ -29,24 +29,24 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea11 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend11 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series21 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series22 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.ant = new Tao.Platform.Windows.SimpleOpenGlControl();
             this.refreshTimer = new System.Windows.Forms.Timer(this.components);
             this.isGridVisible = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.result = new System.Windows.Forms.Button();
             this.trainButton = new System.Windows.Forms.Button();
             this.displayButton = new System.Windows.Forms.Button();
             this.graph = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.nnStructure = new System.Windows.Forms.TextBox();
-            this.result = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.button3 = new System.Windows.Forms.Button();
+            this.nnStructure = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.graph)).BeginInit();
@@ -89,8 +89,8 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
@@ -112,6 +112,24 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "tabPage1";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(634, 247);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 20);
+            this.textBox1.TabIndex = 6;
+            this.textBox1.Text = "1";
+            // 
+            // result
+            // 
+            this.result.Location = new System.Drawing.Point(634, 205);
+            this.result.Name = "result";
+            this.result.Size = new System.Drawing.Size(102, 23);
+            this.result.TabIndex = 3;
+            this.result.Text = "Result";
+            this.result.UseVisualStyleBackColor = true;
+            this.result.Click += new System.EventHandler(this.result_Click);
             // 
             // trainButton
             // 
@@ -135,22 +153,22 @@
             // 
             // graph
             // 
-            chartArea11.Name = "ChartArea1";
-            this.graph.ChartAreas.Add(chartArea11);
-            legend11.Name = "Legend1";
-            this.graph.Legends.Add(legend11);
+            chartArea8.Name = "ChartArea1";
+            this.graph.ChartAreas.Add(chartArea8);
+            legend8.Name = "Legend1";
+            this.graph.Legends.Add(legend8);
             this.graph.Location = new System.Drawing.Point(6, 6);
             this.graph.Name = "graph";
-            series21.ChartArea = "ChartArea1";
-            series21.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series21.Legend = "Legend1";
-            series21.Name = "Series1";
-            series22.ChartArea = "ChartArea1";
-            series22.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series22.Legend = "Legend1";
-            series22.Name = "Series2";
-            this.graph.Series.Add(series21);
-            this.graph.Series.Add(series22);
+            series15.ChartArea = "ChartArea1";
+            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series15.Legend = "Legend1";
+            series15.Name = "Series1";
+            series16.ChartArea = "ChartArea1";
+            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series16.Legend = "Legend1";
+            series16.Name = "Series2";
+            this.graph.Series.Add(series15);
+            this.graph.Series.Add(series16);
             this.graph.Size = new System.Drawing.Size(740, 422);
             this.graph.TabIndex = 0;
             this.graph.Text = "graph";
@@ -179,33 +197,6 @@
             this.tabPage3.Text = "tabPage3";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // nnStructure
-            // 
-            this.nnStructure.Location = new System.Drawing.Point(6, 6);
-            this.nnStructure.Multiline = true;
-            this.nnStructure.Name = "nnStructure";
-            this.nnStructure.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.nnStructure.Size = new System.Drawing.Size(760, 422);
-            this.nnStructure.TabIndex = 0;
-            // 
-            // result
-            // 
-            this.result.Location = new System.Drawing.Point(634, 205);
-            this.result.Name = "result";
-            this.result.Size = new System.Drawing.Size(102, 23);
-            this.result.TabIndex = 3;
-            this.result.Text = "Result";
-            this.result.UseVisualStyleBackColor = true;
-            this.result.Click += new System.EventHandler(this.result_Click);
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(634, 247);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 6;
-            this.textBox1.Text = "1";
-            // 
             // button3
             // 
             this.button3.Location = new System.Drawing.Point(647, 27);
@@ -215,6 +206,15 @@
             this.button3.Text = "oneStep";
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // nnStructure
+            // 
+            this.nnStructure.Location = new System.Drawing.Point(6, 6);
+            this.nnStructure.Multiline = true;
+            this.nnStructure.Name = "nnStructure";
+            this.nnStructure.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.nnStructure.Size = new System.Drawing.Size(760, 422);
+            this.nnStructure.TabIndex = 0;
             // 
             // MainForm
             // 

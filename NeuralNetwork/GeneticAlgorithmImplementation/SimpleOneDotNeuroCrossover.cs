@@ -1,12 +1,12 @@
 ﻿using System.Collections.Generic;
-using System.Linq;
 using Common.Entities.Exceptions;
 using GeneticAlgorithm.Interfaces;
-using NeuralNetwork;
+using NeuralNetworkCore;
+using System.Linq;
 
-namespace GeneticAlgorithm.Implementation.Neuro
+namespace NeuralNetworkCore.GeneticAlgorithmImplementation
 {
-    public class ComplexNeuroCrossover : ICrossover<Neuron>
+    public class SimpleOneDotNeuroCrossover : ICrossover<Neuron>
     {
         public List<IChromosome<Neuron>> Perform(List<IChromosome<Neuron>> population)
         {
@@ -29,19 +29,23 @@ namespace GeneticAlgorithm.Implementation.Neuro
 
             var half = firstChrom.Gens.Count / 2;
 
-            firstChild.Gens = crossoverNeuroChromosome_(firstChrom.Gens.Take(half), secondChrom.Gens.Skip(half).Take(half));
-            secondChild.Gens = crossoverNeuroChromosome_(secondChrom.Gens.Take(half), firstChrom.Gens.Skip(half).Take(half));
+            firstChild.Gens
+                      .AddRange(firstChrom.Gens.Take(half));
+
+            firstChild.Gens
+                      .AddRange(secondChrom.Gens.Skip(half).Take(half));
+
+            secondChild.Gens
+                       .AddRange(secondChrom.Gens.Take(half));
+
+            secondChild.Gens
+                      .AddRange(firstChrom.Gens.Skip(half).Take(half));
 
             return new List<IChromosome<Neuron>>
                 {
                     firstChild,
                     secondChild
                 };
-        }
-
-        private List<IGen<Neuron>> crossoverNeuroChromosome_(IEnumerable<IGen<Neuron>> firstGensPart, IEnumerable<IGen<Neuron>> secondGensPart)
-        {
-            return null;
         }
     }
 }

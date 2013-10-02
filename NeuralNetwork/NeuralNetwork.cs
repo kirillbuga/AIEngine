@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Common.Entities;
+using NeuralNetworkCore.GeneticAlgorithmImplementation;
 
-namespace NeuralNetwork
+//using Common.Entities;
+
+namespace NeuralNetworkCore
 {
     public class NeuralNetwork
     {
@@ -20,9 +22,9 @@ namespace NeuralNetwork
             Random = new Random((int) DateTime.Now.Ticks);
             Layers = new List<Layer>();
 
-            Logger.ClearLog();
-            Logger.WriteFile(DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss"));
-            Logger.WriteFile("NN is initialized");
+            //Logger.ClearLog();
+            //Logger.WriteFile(DateTime.Now.ToString("dd/MM/yyyy hh:mm:ss"));
+            //Logger.WriteFile("NN is initialized");
         }
 
         public NeuralNetwork WithInputs(int inputs)
@@ -154,7 +156,30 @@ namespace NeuralNetwork
             }
         }
 
-        public string GetNetworkState()
+        public List<Neuron> GetNetworkState()
+        {
+            return Layers.SelectMany(x => x.Neurons.Select(y => y)).ToList();
+        }
+
+        public void SetNetworkState(NeuroChromosome chromosome)
+        {
+            foreach (var layer in Layers)
+            {
+                var gensForCurrentLayer = chromosome.Gens.Where(x => x.Value.Parent.Index == layer.Index);
+                layer.Neurons = gensForCurrentLayer.Select(x => x.Value).ToList();
+
+                foreach (var neuronLinks in layer.Neurons.Select(localNeuron => layer.Links.Where(x => x.Target.Index == localNeuron.Index).ToList()))
+                {
+                    for (int j = 0; j < neuronLinks.Count; j++)
+                    {
+                        var gen = gensForCurrentLayer as NeuroGen;
+                        neuronLinks[j].Weigth = gen.Weights[j];
+                    }
+                }
+            }
+        }
+
+        public string NetworkStateLog()
         {
             var result = "";
 
@@ -226,7 +251,7 @@ namespace NeuralNetwork
         private void addLayer_(Layer layer)
         {
             Layers.Add(layer);
-            Logger.WriteAdd(layer);
+            //Logger.WriteAdd(layer);
         }
 
         private void initializeLinks_(Layer layer)

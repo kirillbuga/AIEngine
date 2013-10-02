@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using GeneticAlgorithm.Interfaces;
-using NeuralNetwork;
+using NeuralNetworkCore;
 
-namespace GeneticAlgorithm.Implementation.Neuro
+namespace NeuralNetworkCore.GeneticAlgorithmImplementation
 {
     public class NeuroChromosome : IChromosome<Neuron>
     {

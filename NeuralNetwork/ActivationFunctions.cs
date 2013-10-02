@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace NeuralNetwork
+namespace NeuralNetworkCore
 {
     public static class ActivationFunctions
     {

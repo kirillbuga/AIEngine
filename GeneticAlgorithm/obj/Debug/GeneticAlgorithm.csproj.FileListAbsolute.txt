@@ -4,7 +4,3 @@ c:\Users\Кирилл\documents\visual studio 2012\Projects\AIEngine\GeneticAlgo
 c:\Users\Кирилл\documents\visual studio 2012\Projects\AIEngine\GeneticAlgorithm\obj\Debug\GeneticAlgorithm.pdb
 c:\Users\Кирилл\documents\visual studio 2012\Projects\AIEngine\GeneticAlgorithm\bin\Debug\FizzWare.NBuilder.dll
 C:\Users\Кирилл\documents\visual studio 2012\Projects\AIEngine\GeneticAlgorithm\obj\Debug\GeneticAlgorithm.csprojResolveAssemblyReference.cache
-C:\Users\Кирилл\documents\visual studio 2012\Projects\AIEngine\GeneticAlgorithm\bin\Debug\Common.Entities.dll
-C:\Users\Кирилл\documents\visual studio 2012\Projects\AIEngine\GeneticAlgorithm\bin\Debug\Common.Entities.pdb
-C:\Users\Кирилл\documents\visual studio 2012\Projects\AIEngine\GeneticAlgorithm\bin\Debug\NeuralNetwork.dll
-C:\Users\Кирилл\documents\visual studio 2012\Projects\AIEngine\GeneticAlgorithm\bin\Debug\NeuralNetwork.pdb

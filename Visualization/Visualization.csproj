@@ -53,6 +53,11 @@
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\TaoFramework\bin\Tao.FreeGlut.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="Tao.FreeType, Version=2.3.5.0, Culture=neutral, PublicKeyToken=e499629dc69cd531, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\..\..\..\..\Program Files (x86)\TaoFramework\bin\Tao.FreeType.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Tao.OpenGl, Version=2.1.0.12, Culture=neutral, PublicKeyToken=1ca010269a4501ef, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\..\..\..\..\Program Files (x86)\TaoFramework\bin\Tao.OpenGl.dll</HintPath>
@@ -105,9 +110,9 @@
       <Project>{662d75e3-72c9-4681-ba6f-73e51f848367}</Project>
       <Name>Common</Name>
     </ProjectReference>
-    <ProjectReference Include="..\NeuralNetwork\NeuralNetwork.Core.csproj">
+    <ProjectReference Include="..\NeuralNetwork\NeuralNetworkCore.csproj">
       <Project>{c033b198-7f85-44de-8792-87a8850ae242}</Project>
-      <Name>NeuralNetwork.Core</Name>
+      <Name>NeuralNetworkCore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

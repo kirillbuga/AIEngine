@@ -1,6 +1,6 @@
-﻿using Common.Entities;
+﻿//using Common.Entities;
 
-namespace NeuralNetwork
+namespace NeuralNetworkCore
 {
     public class Link
     {
@@ -15,7 +15,7 @@ namespace NeuralNetwork
             set
             {
                 _weigth = value;
-                Logger.WriteChange(this);
+                //Logger.WriteChange(this);
             }
         }
 

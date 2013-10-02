@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using Common.Entities;
+//using Common.Entities;
 
-namespace NeuralNetwork
+namespace NeuralNetworkCore
 {
     public class Layer
     {
@@ -28,14 +28,14 @@ namespace NeuralNetwork
             neuron.Parent = this;
             Neurons.Add(neuron);
 
-            Logger.WriteAdd(neuron);
+            //Logger.WriteAdd(neuron);
         }
 
         public void AddLink(Link link)
         {
             Links.Add(link);
 
-            Logger.WriteAdd(link);
+            //Logger.WriteAdd(link);
         }
 
         public List<double> GetOutputs()

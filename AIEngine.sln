@@ -11,7 +11,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visualization", "Visualizat
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common.Entities\Common.csproj", "{662D75E3-72C9-4681-BA6F-73E51F848367}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetwork.Core", "NeuralNetwork\NeuralNetwork.Core.csproj", "{C033B198-7F85-44DE-8792-87A8850AE242}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetworkCore", "NeuralNetwork\NeuralNetworkCore.csproj", "{C033B198-7F85-44DE-8792-87A8850AE242}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{C127B8D9-8CC6-492B-8A07-576B437C1825}"
 	ProjectSection(SolutionItems) = preProject
