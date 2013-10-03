@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AIEngine.Tests", "AIEngine.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Visualization", "Visualization\Visualization.csproj", "{891AF74E-1E74-4BC4-981F-E65737F86229}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common.Entities\Common.csproj", "{662D75E3-72C9-4681-BA6F-73E51F848367}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Common", "Common\Common.csproj", "{662D75E3-72C9-4681-BA6F-73E51F848367}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NeuralNetworkCore", "NeuralNetworkCore\NeuralNetworkCore.csproj", "{C033B198-7F85-44DE-8792-87A8850AE242}"
 EndProject
