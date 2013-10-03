@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using Common.Entities;
 
-namespace Common.Entities.Entities
+namespace AIEngine.Entities
 {
     public class GameEnvironment
     {
@@ -11,7 +12,7 @@ namespace Common.Entities.Entities
         public List<Food> Foods { get; set; }
 
         private Random Random { get; set; }
-        private const int VisibleZone = 100;
+        private const int VisibleZone = 50;
 
         private int Width { get; set; }
         private int Height { get; set; }

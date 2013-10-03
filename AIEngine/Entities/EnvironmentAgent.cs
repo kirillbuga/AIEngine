@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using Common.Entities;
 using NeuralNetworkCore;
 
-namespace Common.Entities.Entities
+namespace AIEngine.Entities
 {
     public class EnvironmentAgent : Agent
     {

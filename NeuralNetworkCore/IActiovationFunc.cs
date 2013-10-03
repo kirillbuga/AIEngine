@@ -2,7 +2,7 @@
 {
     public interface IActivationFunc
     {
-        int Index { get;}
+        int Index { get; set; }
         double Activate(double s);
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Linq;
-//using Common.Entities;
+using Common.Entities;
 
 namespace NeuralNetworkCore
 {
@@ -33,7 +33,7 @@ namespace NeuralNetworkCore
             set
             {
                 _input = value;
-                //Logger.WriteChange(this);
+                Logger.WriteChange(this);
             }
         }
 
@@ -44,7 +44,7 @@ namespace NeuralNetworkCore
             set
             {
                 _output = value;
-                //Logger.WriteChange(this);
+                Logger.WriteChange(this);
             }
         }
 
@@ -59,7 +59,7 @@ namespace NeuralNetworkCore
             set
             {
                 _error = value;
-                //Logger.WriteChange(this);
+                Logger.WriteChange(this);
             }
         }
 

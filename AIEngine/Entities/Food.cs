@@ -1,4 +1,6 @@
-﻿namespace Common.Entities
+﻿using Common.Entities;
+
+namespace AIEngine.Entities
 {
     public class Food : ICoordinated
     {

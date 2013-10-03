@@ -1,6 +1,6 @@
 ﻿using NeuralNetworkCore;
 
-namespace Common.Entities.Entities
+namespace AIEngine.Entities
 {
     public class EnvironmentOptions
     {

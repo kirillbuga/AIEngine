@@ -17,7 +17,7 @@ namespace AIEngine
         {
             IFittnessFunction<int> fittnessFunction = new ChessIntFittnessFunction();
             ICrossover<int> crossover = new IntOneDotCrossover();
-            ISelection<int> selection = new RouletteIntSelection();
+            ISelection<int> selection = new RouletteSelection<int>();
             IMutation<int> mutation = new IntMutation(2, 10);
             ITerminate<int> terminate = new ChessIntTerminate();
             

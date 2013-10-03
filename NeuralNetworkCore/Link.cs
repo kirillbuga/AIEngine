@@ -1,4 +1,4 @@
-﻿//using Common.Entities;
+﻿using Common.Entities;
 
 namespace NeuralNetworkCore
 {
@@ -15,7 +15,7 @@ namespace NeuralNetworkCore
             set
             {
                 _weigth = value;
-                //Logger.WriteChange(this);
+                Logger.WriteChange(this);
             }
         }
 

@@ -4,15 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C033B198-7F85-44DE-8792-87A8850AE242}</ProjectGuid>
+    <ProjectGuid>{98CC8A6A-1E02-4937-A2BD-82B7D56672C4}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>NeuralNetwork</RootNamespace>
-    <AssemblyName>NeuralNetwork</AssemblyName>
+    <RootNamespace>AIEngine2</RootNamespace>
+    <AssemblyName>AIEngine2</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -22,6 +23,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -29,7 +31,13 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FizzWare.NBuilder">
+      <HintPath>..\packages\NBuilder.3.0.1.1\lib\FizzWare.NBuilder.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,23 +47,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ActivationFunctions.cs" />
-    <Compile Include="GeneticAlgorithmImplementation\ComplexNeuroCrossover.cs" />
-    <Compile Include="GeneticAlgorithmImplementation\NeuroChromosome.cs" />
-    <Compile Include="GeneticAlgorithmImplementation\NeuroGen.cs" />
-    <Compile Include="GeneticAlgorithmImplementation\SimpleOneDotNeuroCrossover.cs" />
-    <Compile Include="IActiovationFunc.cs" />
-    <Compile Include="Layer.cs" />
-    <Compile Include="Link.cs" />
-    <Compile Include="NeuralNetwork.cs" />
-    <Compile Include="Neuron.cs" />
-    <Compile Include="Properties\Annotations.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="App.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Common.Entities\Common.csproj">
+      <Project>{662d75e3-72c9-4681-ba6f-73e51f848367}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GeneticAlgorithm\GeneticAlgorithm.csproj">
       <Project>{f93e85ea-69c5-4f22-968b-9b0eeaff717d}</Project>
       <Name>GeneticAlgorithm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NeuralNetworkCore\NeuralNetworkCore.csproj">
+      <Project>{c033b198-7f85-44de-8792-87a8850ae242}</Project>
+      <Name>NeuralNetworkCore</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

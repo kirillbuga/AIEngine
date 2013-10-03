@@ -29,28 +29,29 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea8 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
-            System.Windows.Forms.DataVisualization.Charting.Legend legend8 = new System.Windows.Forms.DataVisualization.Charting.Legend();
-            System.Windows.Forms.DataVisualization.Charting.Series series15 = new System.Windows.Forms.DataVisualization.Charting.Series();
-            System.Windows.Forms.DataVisualization.Charting.Series series16 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.ant = new Tao.Platform.Windows.SimpleOpenGlControl();
             this.refreshTimer = new System.Windows.Forms.Timer(this.components);
             this.isGridVisible = new System.Windows.Forms.CheckBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.result = new System.Windows.Forms.Button();
             this.trainButton = new System.Windows.Forms.Button();
             this.displayButton = new System.Windows.Forms.Button();
             this.graph = new System.Windows.Forms.DataVisualization.Charting.Chart();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.button3 = new System.Windows.Forms.Button();
             this.nnStructure = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.tabPage1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.graph)).BeginInit();
-            this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -98,8 +99,21 @@
             this.tabControl1.Size = new System.Drawing.Size(780, 460);
             this.tabControl1.TabIndex = 2;
             // 
+            // tabPage2
+            // 
+            this.tabPage2.Controls.Add(this.ant);
+            this.tabPage2.Controls.Add(this.isGridVisible);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(772, 434);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "tabPage2";
+            this.tabPage2.UseVisualStyleBackColor = true;
+            // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.textBox1);
             this.tabPage1.Controls.Add(this.result);
             this.tabPage1.Controls.Add(this.trainButton);
@@ -153,37 +167,25 @@
             // 
             // graph
             // 
-            chartArea8.Name = "ChartArea1";
-            this.graph.ChartAreas.Add(chartArea8);
-            legend8.Name = "Legend1";
-            this.graph.Legends.Add(legend8);
+            chartArea1.Name = "ChartArea1";
+            this.graph.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.graph.Legends.Add(legend1);
             this.graph.Location = new System.Drawing.Point(6, 6);
             this.graph.Name = "graph";
-            series15.ChartArea = "ChartArea1";
-            series15.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series15.Legend = "Legend1";
-            series15.Name = "Series1";
-            series16.ChartArea = "ChartArea1";
-            series16.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
-            series16.Legend = "Legend1";
-            series16.Name = "Series2";
-            this.graph.Series.Add(series15);
-            this.graph.Series.Add(series16);
+            series1.ChartArea = "ChartArea1";
+            series1.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series1.Legend = "Legend1";
+            series1.Name = "Series1";
+            series2.ChartArea = "ChartArea1";
+            series2.ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Point;
+            series2.Legend = "Legend1";
+            series2.Name = "Series2";
+            this.graph.Series.Add(series1);
+            this.graph.Series.Add(series2);
             this.graph.Size = new System.Drawing.Size(740, 422);
             this.graph.TabIndex = 0;
             this.graph.Text = "graph";
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.ant);
-            this.tabPage2.Controls.Add(this.isGridVisible);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(772, 434);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // tabPage3
             // 
@@ -216,6 +218,16 @@
             this.nnStructure.Size = new System.Drawing.Size(760, 422);
             this.nnStructure.TabIndex = 0;
             // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(634, 296);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(100, 23);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Genetic step";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -225,11 +237,11 @@
             this.Name = "MainForm";
             this.Text = "MainForm";
             this.tabControl1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
+            this.tabPage2.PerformLayout();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.graph)).EndInit();
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage2.PerformLayout();
             this.tabPage3.ResumeLayout(false);
             this.tabPage3.PerformLayout();
             this.ResumeLayout(false);
@@ -252,6 +264,7 @@
         private System.Windows.Forms.Button result;
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button button1;
     }
 }
 

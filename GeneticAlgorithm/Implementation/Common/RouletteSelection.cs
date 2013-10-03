@@ -5,9 +5,9 @@ using System.Linq;
 
 namespace GeneticAlgorithm.Implementation.Common
 {
-    public class RouletteIntSelection : ISelection<int>
+    public class RouletteSelection<T> : ISelection<T>
     {
-        public List<IChromosome<int>> Select(List<IChromosome<int>> population)
+        public List<IChromosome<T>> Select(List<IChromosome<T>> population)
         {
             var random = new Random(DateTime.Now.Millisecond);
 
@@ -25,7 +25,7 @@ namespace GeneticAlgorithm.Implementation.Common
             var firstRouletteValue = random.NextDouble();
             var secondRouletteValue = random.NextDouble();
 
-            var result = new List<IChromosome<int>>();
+            var result = new List<IChromosome<T>>();
 
             for (int i = 0; i < roulette.Count - 1; i++)
             {

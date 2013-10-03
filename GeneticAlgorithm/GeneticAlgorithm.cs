@@ -30,7 +30,7 @@ namespace GeneticAlgorithm
 
         public ITerminate<T> Terminate { get; set; } 
 
-        public void PerformIteration()
+        public virtual void PerformIteration()
         {
             foreach (var chromosome in Population)
             {

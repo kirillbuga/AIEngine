@@ -2,7 +2,7 @@
 using GeneticAlgorithm.Interfaces;
 using NeuralNetworkCore;
 
-namespace NeuralNetworkCore.GeneticAlgorithmImplementation
+namespace AIEngine.GeneticAlgorithmImplementation
 {
     public class NeuroChromosome : IChromosome<Neuron>
     {

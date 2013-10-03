@@ -1,8 +1,9 @@
 ﻿using System;
 using System.Drawing;
+using Common.Entities;
 using NeuralNetworkCore;
 
-namespace Common.Entities
+namespace AIEngine.Entities
 {
     public class Agent : ICoordinated
     {

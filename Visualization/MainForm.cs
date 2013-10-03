@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
-using Common.Entities;
-using Common.Entities.Entities;
+using AIEngine.Entities;
+using AIEngine.GeneticAlgorithmImplementation;
+using AIEngine.GeneticAlgorithmImplementation.NeuroGeneticAlgorithm;
+using GeneticAlgorithm.Implementation.Common;
 using NeuralNetworkCore;
 using Tao.FreeGlut;
 using Tao.OpenGl;
-using System.Linq;
 
 namespace Visualization
 {
@@ -17,6 +19,7 @@ namespace Visualization
         public NeuralNetwork NeuralNetwork { get; set; }
         public bool IsResult { get; set; }
         public GameEnvironment GameEnvironment { get; set; }
+        public NeuroGeneticAlgorithm GeneticAlgorithm { get; set; }
 
         private bool _isDebugMode = false;
 
@@ -46,6 +49,15 @@ namespace Visualization
             };
 
             GameEnvironment = new GameEnvironment(options);
+
+            var fittnessFunction = new NeuroFittnessFunction();
+            var selection = new RouletteSelection<Neuron>();
+            var crossover = new SimpleTwoDotNeuroCrossover();
+            var mutation = new NeuroMutation(2, 5);
+            var terminate = new NeuroTerminate();
+
+            GeneticAlgorithm = new NeuroGeneticAlgorithm(fittnessFunction, selection, crossover, mutation, terminate,
+                                                         NeuralNetwork);
         }
 
         private void displayButton_Click(object sender, EventArgs e)
@@ -174,7 +186,7 @@ namespace Visualization
             if (_isDebugMode)
             {
                 Gl.glPushMatrix();
-                drawBitmapText_(agent.ToString(), agent.X, agent.Y);
+                drawBitmapText_(agent.Angle.ToString(), agent.X, agent.Y);
                 Gl.glPopMatrix();
             }
         }
@@ -202,5 +214,10 @@ namespace Visualization
         }
 
         #endregion
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            GeneticAlgorithm.PerformIteration();
+        }
     }
 }

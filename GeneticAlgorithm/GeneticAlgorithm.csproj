@@ -50,7 +50,7 @@
     <Compile Include="Implementation\Common\ChessIntFittnessFunction.cs" />
     <Compile Include="Implementation\Common\IntGen.cs" />
     <Compile Include="Implementation\Common\IntMutation.cs" />
-    <Compile Include="Implementation\Common\RouletteIntSelection.cs" />
+    <Compile Include="Implementation\Common\RouletteSelection.cs" />
     <Compile Include="Implementation\Common\ChessIntTerminate.cs" />
     <Compile Include="Interfaces\IChromosome.cs" />
     <Compile Include="Interfaces\ICrossover.cs" />
