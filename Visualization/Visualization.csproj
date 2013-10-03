@@ -113,7 +113,7 @@
       <Project>{19191465-4803-41c7-a5e9-c14bbabb1c97}</Project>
       <Name>AIEngine</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Common.Entities\Common.csproj">
+    <ProjectReference Include="..\Common\Common.csproj">
       <Project>{662d75e3-72c9-4681-ba6f-73e51f848367}</Project>
       <Name>Common</Name>
     </ProjectReference>
