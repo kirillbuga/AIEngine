@@ -78,5 +78,10 @@ namespace AIEngine.Entities
 
             base.Move();
         }
+
+        public override string ToString()
+        {
+            return string.Format("Harvested food: {0}, {1}", HarvestedFood, base.ToString());
+        }
     }
 }

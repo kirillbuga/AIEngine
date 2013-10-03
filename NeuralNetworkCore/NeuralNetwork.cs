@@ -146,13 +146,7 @@ namespace NeuralNetworkCore
 
         public void Reset()
         {
-            foreach (var layer in Layers)
-            {
-                foreach (var neuron in layer.Neurons)
-                {
-                    neuron.Reset();
-                }
-            }
+            Layers = new List<Layer>();
         }
 
         public string NetworkStateLog()

@@ -22,7 +22,7 @@ namespace AIEngine.GeneticAlgorithmImplementation.NeuroGeneticAlgorithm
         {
             NeuralNetwork = networkForTeach;
             Random = new Random((int) DateTime.Now.Ticks);
-            generateNeuroPopulation_(NeuralNetwork.GetNetworkState());
+            generateNeuroPopulation_();
 
             var options = new EnvironmentOptions
                 {
@@ -35,28 +35,36 @@ namespace AIEngine.GeneticAlgorithmImplementation.NeuroGeneticAlgorithm
             TestGameEnvironment = new GameEnvironment(options);
         }
 
-        private void generateNeuroPopulation_(NeuroChromosome getNetworkState)
+        private void generateNeuroPopulation_()
         {
-            for (var i = 0; i < TestPopulationCount; i++ )
+            var networkState = NeuralNetwork.GetNetworkState();
+
+            for (var i = 0; i < TestPopulationCount; i++)
             {
                 var neuroChromosome = new List<IGen<Neuron>>();
-
-                foreach (var gen in getNetworkState.Gens)
+                foreach (var layer in networkState)
                 {
-                    var neuroGen = gen as NeuroGen;
-
-                    for (int index = 0; index < neuroGen.Weights.Count; index++)
+                    foreach (var neuron in layer.Neurons)
                     {
-                        neuroGen.Weights[index] = Random.NextDouble();
-                    }
+                        var neuroGen = new NeuroGen();
+                        var weights = layer.Links.Count(x => x.Target.Index == neuron.Index);
 
-                    var activationFuncIndex = Random.Next(1, ActivationFunctions.AvailableActivatonFunctions.Count() + 1);
-                    neuroGen.Value =
-                        new Neuron(ActivationFunctions.AvailableActivatonFunctions.FirstOrDefault(x => x.Index == activationFuncIndex));
-                    neuroChromosome.Add(neuroGen);
+                        for (int index = 0; index < weights; index++)
+                        {
+                            neuroGen.Weights.Add(Random.NextDouble());
+                        }
+
+                        var activationFuncIndex = Random.Next(1,
+                                                              ActivationFunctions.AvailableActivatonFunctions.Count() +
+                                                              1);
+                        var activationFunc = ActivationFunctions.AvailableActivatonFunctions.FirstOrDefault(x => x.Index == activationFuncIndex);
+
+                        neuroGen.Value = new Neuron(activationFunc) {Index = neuron.Index, Parent = layer};
+                        neuroChromosome.Add(neuroGen);
+                    }
                 }
 
-                Population.Add(new NeuroChromosome {Gens = neuroChromosome, FittnessValue = 0});
+                Population.Add(new NeuroChromosome { Gens = neuroChromosome, FittnessValue = 0 });
             }
         }
 
@@ -69,7 +77,7 @@ namespace AIEngine.GeneticAlgorithmImplementation.NeuroGeneticAlgorithm
                 TestGameEnvironment.Agents[i].HarvestedFood = 0;
             }
 
-            for (int i = 0; i < 1000; i++)
+            do
             {
                 TestGameEnvironment.CalculateAgentsEnvironmentParameters();
                 TestGameEnvironment.GetHarvestedFood();
@@ -81,7 +89,7 @@ namespace AIEngine.GeneticAlgorithmImplementation.NeuroGeneticAlgorithm
                         agent.Move();
                     }
                 }
-            }
+            } while (TestGameEnvironment.Agents.Any(x => x.HarvestedFood < 3));
 
             for (int index = 0; index < Population.Count; index++)
             {
