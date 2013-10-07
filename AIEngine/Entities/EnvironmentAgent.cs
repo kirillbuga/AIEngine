@@ -30,7 +30,19 @@ namespace AIEngine.Entities
             get
             {
                 var vectorToAgent = getVector_(this, NearestAgent);
-                return getAngleBetweenVectors_(vectorToAgent, Vector);
+
+                if (vectorToAgent.X == 0 && vectorToAgent.Y == 0)
+                {
+                    vectorToAgent = new Vector {X = 1, Y = 1};
+                }
+
+                var angle = getAngleBetweenVectors_(vectorToAgent, Vector);
+                if (!double.IsNaN(angle))
+                {
+                    return angle;
+                }
+
+                throw new Exception("Angle to Agent equal to 0");
             }
         }
 
@@ -47,6 +59,10 @@ namespace AIEngine.Entities
         public double DistanceToNearestFood { get; set; }
 
         public int HarvestedFood { get; set; }
+
+        public double DistanceToNearestVertical { get; set; }
+
+        public double DistanceToNearestHorizontal { get; set; }
 
         private Vector getVector_(ICoordinated first, ICoordinated second)
         {

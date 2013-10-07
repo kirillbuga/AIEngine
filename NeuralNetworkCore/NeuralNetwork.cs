@@ -147,6 +147,7 @@ namespace NeuralNetworkCore
         public void Reset()
         {
             Layers = new List<Layer>();
+            _lastLayerNumber = 0;
         }
 
         public string NetworkStateLog()

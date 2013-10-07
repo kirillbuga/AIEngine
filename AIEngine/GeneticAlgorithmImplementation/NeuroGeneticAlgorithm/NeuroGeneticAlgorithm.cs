@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using AIEngine.Entities;
 using GeneticAlgorithm;
@@ -72,12 +73,16 @@ namespace AIEngine.GeneticAlgorithmImplementation.NeuroGeneticAlgorithm
         {
             for (int i = 0; i < Population.Count; i++)
             {
-                TestGameEnvironment.Agents[i].Brain = new NeuralNetwork();
+                TestGameEnvironment.Agents[i] = new EnvironmentAgent(Random.Next(90, 100), Random.Next(90, 100), Random.Next(0, 360),Color.Beige, new NeuralNetwork())
+                    {
+                        HarvestedFood = 1
+                    };
+
                 TestGameEnvironment.Agents[i].Brain.SetNetworkState(Population[i] as NeuroChromosome);
-                TestGameEnvironment.Agents[i].HarvestedFood = 0;
             }
 
-            do
+
+            for (var i = 0; i < 10000; i++)
             {
                 TestGameEnvironment.CalculateAgentsEnvironmentParameters();
                 TestGameEnvironment.GetHarvestedFood();
@@ -89,7 +94,7 @@ namespace AIEngine.GeneticAlgorithmImplementation.NeuroGeneticAlgorithm
                         agent.Move();
                     }
                 }
-            } while (TestGameEnvironment.Agents.Any(x => x.HarvestedFood < 3));
+            }
 
             for (int index = 0; index < Population.Count; index++)
             {

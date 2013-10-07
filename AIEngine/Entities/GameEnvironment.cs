@@ -80,46 +80,49 @@ namespace AIEngine.Entities
             foreach (var agent in Agents)
             {
                 var localAgent = agent;
-
+                var agents = Agents.Except(new List<EnvironmentAgent> {localAgent}).ToList();
                 var nearAgents =
-                    Agents.Except(new List<EnvironmentAgent> {agent})
-                          .Where(
-                              x =>
-                              x != localAgent && GetDistanceBetweenAgents(x, localAgent) < VisibleZone &&
-                              (agent.Vector.X*(x.X - agent.X) + agent.Vector.Y*(x.Y - agent.Y)) >= 0);
-              
+                    agents.Where(
+                        x =>
+                        x != localAgent && GetDistanceBetweenAgents(x, localAgent) < VisibleZone &&
+                        (localAgent.Vector.X*(x.X - localAgent.X) + localAgent.Vector.Y*(x.Y - localAgent.Y)) >= 0);
+
                 var nearFood =
                     Foods.Where(x => GetDistanceBetweenAgents(x, localAgent) < VisibleZone &&
-                              (agent.Vector.X * (x.X - agent.X) + agent.Vector.Y * (x.Y - agent.Y)) >= 0);
+                                     (localAgent.Vector.X*(x.X - localAgent.X) +
+                                      localAgent.Vector.Y*(x.Y - localAgent.Y)) >= 0);
 
                 if (nearAgents.Any())
                 {
-                    agent.AgentsNear = true;
-                    agent.DistanceToNearestAgent = Agents.Except(new List<EnvironmentAgent>{agent}).Min(x => GetDistanceBetweenAgents(x, localAgent));
-                    agent.NearestAgent =
-                        Agents.FirstOrDefault(
-                            y => GetDistanceBetweenAgents(y, localAgent) == agent.DistanceToNearestAgent);
+                    localAgent.AgentsNear = true;
+                    localAgent.DistanceToNearestAgent = agents.Min(x => GetDistanceBetweenAgents(x, localAgent));
+                    localAgent.NearestAgent =
+                        agents.FirstOrDefault(
+                            y => GetDistanceBetweenAgents(y, localAgent) == localAgent.DistanceToNearestAgent);
                 }
                 else
                 {
-                    agent.AgentsNear = false;
-                    agent.DistanceToNearestAgent = 0;
-                    agent.NearestAgent = new Agent();
+                    localAgent.AgentsNear = false;
+                    localAgent.DistanceToNearestAgent = 0;
+                    localAgent.NearestAgent = new Agent();
                 }
 
                 if (nearFood.Any())
                 {
-                    agent.FoodNear = true;
-                    agent.DistanceToNearestFood = Foods.Min(x => GetDistanceBetweenAgents(x, localAgent));
-                    agent.NearestFood =
-                        Foods.FirstOrDefault(y => GetDistanceBetweenAgents(y, localAgent) == agent.DistanceToNearestFood);
+                    localAgent.FoodNear = true;
+                    localAgent.DistanceToNearestFood = Foods.Min(x => GetDistanceBetweenAgents(x, localAgent));
+                    localAgent.NearestFood =
+                        Foods.FirstOrDefault(y => GetDistanceBetweenAgents(y, localAgent) == localAgent.DistanceToNearestFood);
                 }
                 else
                 {
-                    agent.FoodNear = false;
-                    agent.DistanceToNearestFood = 0;
-                    agent.NearestFood = new Food();
+                    localAgent.FoodNear = false;
+                    localAgent.DistanceToNearestFood = 0;
+                    localAgent.NearestFood = new Food();
                 }
+
+                //agent.DistanceToNearestVertical = Math.Min(Width - agent.X, agent.X);
+                //agent.DistanceToNearestHorizontal = Math.Min(Height - agent.Y, agent.Y);
             }
         }
 

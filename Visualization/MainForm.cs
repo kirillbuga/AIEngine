@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading;
 using System.Windows.Forms;
 using AIEngine.Entities;
 using AIEngine.GeneticAlgorithmImplementation;
@@ -9,6 +10,7 @@ using GeneticAlgorithm.Implementation.Common;
 using NeuralNetworkCore;
 using Tao.FreeGlut;
 using Tao.OpenGl;
+using AIEngine;
 
 namespace Visualization
 {
@@ -217,7 +219,17 @@ namespace Visualization
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var thread = new Thread(Test);
+            thread.Start();
+        }
+
+        private void Test()
+        {
             GeneticAlgorithm.PerformIteration();
+            var winner = GeneticAlgorithm.Population.FirstOrDefault(
+                y => y.FittnessValue == GeneticAlgorithm.Population.Max(x => x.FittnessValue));
+            var w = winner as NeuroChromosome;
+            NeuralNetwork.SetNetworkState(w);
         }
     }
 }
