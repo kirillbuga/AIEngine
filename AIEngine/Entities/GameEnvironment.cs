@@ -12,7 +12,7 @@ namespace AIEngine.Entities
         public List<Food> Foods { get; set; }
 
         private Random Random { get; set; }
-        private const int VisibleZone = 50;
+        private const int VisibleZone = 5;
 
         private int Width { get; set; }
         private int Height { get; set; }
@@ -77,8 +77,9 @@ namespace AIEngine.Entities
 
         public void CalculateAgentsEnvironmentParameters()
         {
-            foreach (var agent in Agents)
+            for (int index = 0; index < Agents.Count; index++)
             {
+                var agent = Agents[index];
                 var localAgent = agent;
                 var agents = Agents.Except(new List<EnvironmentAgent> {localAgent}).ToList();
                 var nearAgents =
@@ -112,7 +113,8 @@ namespace AIEngine.Entities
                     localAgent.FoodNear = true;
                     localAgent.DistanceToNearestFood = Foods.Min(x => GetDistanceBetweenAgents(x, localAgent));
                     localAgent.NearestFood =
-                        Foods.FirstOrDefault(y => GetDistanceBetweenAgents(y, localAgent) == localAgent.DistanceToNearestFood);
+                        Foods.FirstOrDefault(
+                            y => GetDistanceBetweenAgents(y, localAgent) == localAgent.DistanceToNearestFood);
                 }
                 else
                 {
@@ -121,8 +123,8 @@ namespace AIEngine.Entities
                     localAgent.NearestFood = new Food();
                 }
 
-                //agent.DistanceToNearestVertical = Math.Min(Width - agent.X, agent.X);
-                //agent.DistanceToNearestHorizontal = Math.Min(Height - agent.Y, agent.Y);
+                agent.DistanceToNearestVertical = Math.Min(Width - agent.X, agent.X);
+                agent.DistanceToNearestHorizontal = Math.Min(Height - agent.Y, agent.Y);
             }
         }
 
@@ -131,12 +133,12 @@ namespace AIEngine.Entities
             var newX = agent.X + agent.Vector.X * agent.Speed;
             var newY = agent.Y + agent.Vector.Y * agent.Speed;
 
-            if (newX < 10 || newX > Width - 10)
+            if (newX <= 5 || newX >= Width - 5)
             {
                 return false;
             }
 
-            if (newY < 10 || newY > Height - 10)
+            if (newY <= 5 || newY >= Height - 5)
             {
                 return false;
             }

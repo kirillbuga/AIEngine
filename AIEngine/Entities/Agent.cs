@@ -13,7 +13,7 @@ namespace AIEngine.Entities
             Y = y;
             Angle = angle;
             Color = color;
-            Speed = 1;
+            Speed = 0.7;
             Brain = brain;
 
             _vector = new Vector();
@@ -28,7 +28,7 @@ namespace AIEngine.Entities
         public double Y { get; set; }
 
         public NeuralNetwork Brain { get; set; }
-        public int Speed { get; set; }
+        public double Speed { get; set; }
         public double Angle { get; set; }
 
         private readonly Vector _vector;

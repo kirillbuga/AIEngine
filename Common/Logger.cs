@@ -26,7 +26,7 @@ namespace Common.Entities
 
         public static void ClearLog()
         {
-            File.WriteAllText(@"D:\Temp\log.txt", string.Empty);
+            //File.WriteAllText(@"D:\Temp\log.txt", string.Empty);
         }
 
         public static void WriteChange(object obj)

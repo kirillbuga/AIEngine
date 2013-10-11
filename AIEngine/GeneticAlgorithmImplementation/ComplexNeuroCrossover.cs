@@ -1,6 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
-using Common.Entities.Exceptions;
+using GeneticAlgorithm.Exceptions;
 using GeneticAlgorithm.Interfaces;
 using NeuralNetworkCore;
 
@@ -8,6 +9,19 @@ namespace AIEngine.GeneticAlgorithmImplementation
 {
     public class ComplexNeuroCrossover : ICrossover<Neuron>
     {
+        private int DotsCount { get; set; }
+        private bool ShuffleActivationFunctions { get; set; }
+        private bool ShuffleWeights { get; set; }
+        private Random Random { get; set; }
+
+        public ComplexNeuroCrossover(int dotsCount, bool shuffleActivationFunctions, bool shuffleWeights)
+        {
+            DotsCount = dotsCount;
+            ShuffleActivationFunctions = shuffleActivationFunctions;
+            ShuffleWeights = shuffleWeights;
+            Random = new Random((int) DateTime.Now.Ticks);
+        }
+
         public List<IChromosome<Neuron>> Perform(List<IChromosome<Neuron>> population)
         {
             if (population.Count > 2)
@@ -27,10 +41,21 @@ namespace AIEngine.GeneticAlgorithmImplementation
             var firstChild = new NeuroChromosome();
             var secondChild = new NeuroChromosome();
 
-            var half = firstChrom.Gens.Count / 2;
+            var part = firstChrom.Gens.Count / DotsCount;
 
-            firstChild.Gens = crossoverNeuroChromosome_(firstChrom.Gens.Take(half), secondChrom.Gens.Skip(half).Take(half));
-            secondChild.Gens = crossoverNeuroChromosome_(secondChrom.Gens.Take(half), firstChrom.Gens.Skip(half).Take(half));
+            for (int i = 0, j = 0; i < firstChrom.Gens.Count; i+=part, j++)
+            {
+                var firstGensPart = firstChrom.Gens.Skip(i).Take(part).ToList();
+                var secondGensPart = secondChrom.Gens.Skip(i).Take(part).ToList();
+
+                if (j % 2 != 0)
+                {
+                    crossoverNeuroChromosome_(firstGensPart, secondGensPart);
+                }
+
+                firstChild.Gens.AddRange(firstGensPart);
+                secondChild.Gens.AddRange(secondGensPart);
+            }
 
             return new List<IChromosome<Neuron>>
                 {
@@ -39,9 +64,38 @@ namespace AIEngine.GeneticAlgorithmImplementation
                 };
         }
 
-        private List<IGen<Neuron>> crossoverNeuroChromosome_(IEnumerable<IGen<Neuron>> firstGensPart, IEnumerable<IGen<Neuron>> secondGensPart)
+        private void crossoverNeuroChromosome_(List<IGen<Neuron>> firstGensPart, List<IGen<Neuron>> secondGensPart)
         {
-            return null;
+            var count = firstGensPart.Count;
+            if(ShuffleWeights)
+            {
+                for (int i = 0; i < count; i++)
+                {
+                    var firstNeuroGen = firstGensPart[i] as NeuroGen;
+                    var secondNeuroGen = secondGensPart[i] as NeuroGen;
+
+                    if(ShuffleActivationFunctions)
+                    {
+                        if(Random.Next(0, 100) > 50)
+                        {
+                            var func = firstNeuroGen.Value.ActivationFunc;
+                            firstNeuroGen.Value.ActivationFunc = secondNeuroGen.Value.ActivationFunc;
+                            secondNeuroGen.Value.ActivationFunc = func;
+                        }
+                    }
+
+                    var half = firstNeuroGen.Weights.Count / 2;
+
+                    var first = firstNeuroGen.Weights.Take(half).ToList();
+                    first.AddRange(secondNeuroGen.Weights.Skip(half).Take(count - half + 1));
+                    var second = secondNeuroGen.Weights.Take(half).ToList();
+                    second.AddRange(firstNeuroGen.Weights.Skip(half).Take(count - half + 1));
+                    
+                    firstNeuroGen.Weights = first;
+                    secondNeuroGen.Weights = second;
+                }
+            }
+            
         }
     }
 }

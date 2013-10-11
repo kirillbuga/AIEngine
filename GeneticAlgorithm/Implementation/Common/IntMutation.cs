@@ -1,5 +1,5 @@
 ﻿using System;
-using Common.Entities.Extensions;
+using GeneticAlgorithm.Extensions;
 using GeneticAlgorithm.Interfaces;
 
 namespace GeneticAlgorithm.Implementation.Common

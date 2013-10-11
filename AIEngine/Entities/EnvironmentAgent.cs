@@ -85,14 +85,19 @@ namespace AIEngine.Entities
                     Math.Sqrt(Math.Pow(second.X, 2) + Math.Pow(second.Y, 2)));
         }
 
-        public override void Move()
+        public void Move(bool canMove)
         {
             var foodNear = FoodNear ? 0.7 : 0.3;
             var agentsNear = AgentsNear ? 0.7 : 0.3;
-            var result = Brain.Activate(new List<double> { Angle, DistanceToNearestFood, foodNear, AngleToFood, DistanceToNearestAgent, AngleToAgent, agentsNear });
-            Angle = result[0];
+            var nearWalls = (DistanceToNearestVertical < 15 || DistanceToNearestHorizontal < 15) ? 0.7 : 0.3;
+            var result = Brain.Activate(new List<double> { nearWalls, Angle, DistanceToNearestFood, foodNear, AngleToFood, DistanceToNearestAgent, AngleToAgent, agentsNear });
+            Angle += result[0];
+            Angle = Angle % 360;
 
-            base.Move();
+            if (canMove)
+            {
+                base.Move();
+            }
         }
 
         public override string ToString()

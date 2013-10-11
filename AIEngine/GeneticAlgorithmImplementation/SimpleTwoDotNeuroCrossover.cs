@@ -1,6 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
-using Common.Entities.Exceptions;
+using GeneticAlgorithm.Exceptions;
 using GeneticAlgorithm.Interfaces;
 using System.Linq;
 using NeuralNetworkCore;

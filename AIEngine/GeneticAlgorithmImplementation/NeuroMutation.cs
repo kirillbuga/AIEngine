@@ -36,7 +36,7 @@ namespace AIEngine.GeneticAlgorithmImplementation
 
         private void mutateGen_(IGen<Neuron> gen)
         {
-            var neuroGen = gen as AIEngine.GeneticAlgorithmImplementation.NeuroGen;
+            var neuroGen = gen as NeuroGen;
             var shouldMutateActivationFunc = Random.Next(0, 100) >= MutatedPropability;
             
             if (shouldMutateActivationFunc)

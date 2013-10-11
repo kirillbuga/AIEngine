@@ -1,5 +1,4 @@
-﻿using System.Collections.Generic;
-using System.Linq;
+﻿using System.Linq;
 using AIEngine.GeneticAlgorithmImplementation;
 using NeuralNetworkCore;
 
@@ -7,9 +6,26 @@ namespace AIEngine
 {
     public static class NeuralNetworkExtensions
     {
-        public static List<Layer> GetNetworkState(this NeuralNetwork neuralNetwork)
+        public static NeuroChromosome GetNetworkState(this NeuralNetwork neuralNetwork)
         {
-            return neuralNetwork.Layers.ToList();
+            var networkState =  neuralNetwork.Layers.ToList();
+
+            var neuroChromosome = new NeuroChromosome();
+            foreach (var layer in networkState)
+            {
+                foreach (var neuron in layer.Neurons)
+                {
+                    var neuroGen = new NeuroGen
+                    {
+                        Value = neuron,
+                        Weights = layer.Links.Where(x => x.Target.Index == neuron.Index).Select(x => x.Weigth).ToList()
+                    };
+
+                    neuroChromosome.Gens.Add(neuroGen);
+                }
+            }
+
+            return neuroChromosome;
         }
 
         public static void SetNetworkState(this NeuralNetwork neuralNetwork, NeuroChromosome chromosome)

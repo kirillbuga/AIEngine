@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Runtime.Serialization;
 
-namespace Common.Entities.Exceptions
+namespace GeneticAlgorithm.Exceptions
 {
     public class InvalidArgumentCountException : Exception
     {

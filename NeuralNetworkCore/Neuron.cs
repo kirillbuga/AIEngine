@@ -90,7 +90,7 @@ namespace NeuralNetworkCore
 
         public override string ToString()
         {
-            return string.Format("NEURON Index: {0}, Input: {1}, Output: {2}, Error: {3}", Index, Input, Output, Error);
+            return string.Format("NEURON Index: {0}, Input: {1}, Output: {2}, Error: {3}, AF: {4}", Index, Input, Output, Error, ActivationFunc.Index);
         }
 
         public void Reset()

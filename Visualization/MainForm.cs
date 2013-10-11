@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
@@ -19,11 +18,11 @@ namespace Visualization
         private const int AgentWidth = 10;
         public Random Random { get; set; }
         public NeuralNetwork NeuralNetwork { get; set; }
-        public bool IsResult { get; set; }
+        public bool IsGeneticNow { get; set; }
         public GameEnvironment GameEnvironment { get; set; }
         public NeuroGeneticAlgorithm GeneticAlgorithm { get; set; }
 
-        private bool _isDebugMode = false;
+        private bool _isDebugMode = true;
 
         public MainForm()
         {
@@ -36,14 +35,14 @@ namespace Visualization
             refreshTimer.Start();
 
             NeuralNetwork = new NeuralNetwork()
-                .WithInputs(7)
+                .WithInputs(8)
                 .WithLayerWithSeparateActivationFunction(2)
                 .WithLayerWithSeparateActivationFunction(3)
                 .WithOutputs(1);
 
             var options = new EnvironmentOptions
             {
-                AgentsCount = 20,
+                AgentsCount = 1,
                 FoodCount = 30,
                 FieldWidth = ant.Width,
                 FieldHeight = ant.Height,
@@ -54,59 +53,12 @@ namespace Visualization
 
             var fittnessFunction = new NeuroFittnessFunction();
             var selection = new RouletteSelection<Neuron>();
-            var crossover = new SimpleTwoDotNeuroCrossover();
+            var crossover = new ComplexNeuroCrossover(3, true, true);
             var mutation = new NeuroMutation(2, 5);
             var terminate = new NeuroTerminate();
 
             GeneticAlgorithm = new NeuroGeneticAlgorithm(fittnessFunction, selection, crossover, mutation, terminate,
                                                          NeuralNetwork);
-        }
-
-        private void displayButton_Click(object sender, EventArgs e)
-        {
-            //trainButton_Click(sender, e);
-            graph.Series[0].Points.Clear();
-            graph.Series[1].Points.Clear();
-
-            for (double i = -10; i < 10; i+= 0.1)
-            {
-                graph.Series[0].Points.AddXY(i, Math.Sin(i));
-            }
-
-            for (double i = -10; i < 10; i += 0.1)
-            {
-                graph.Series[1].Points.AddXY(i, NeuralNetwork.Activate(new List<double>{i}).First());
-            }
-
-            textBox1.Text = NeuralNetwork.GetSummaryError().ToString();
-        }
-
-        private void trainButton_Click(object sender, EventArgs e)
-        {
-            for (double i = -100; i < 100; i += 0.1)
-            {
-                var value = Random.Next(0, 360);
-                NeuralNetwork.Activate(new List<double> { value });
-                NeuralNetwork.Correct(new List<double> { Math.Sin(value) });
-            }
-            displayButton_Click(null, null);
-        }
-
-        private void result_Click(object sender, EventArgs e)
-        {
-            tabControl1.SelectTab(2);
-            nnStructure.Clear();
-            nnStructure.Text = NeuralNetwork.NetworkStateLog();
-        }
-
-        public double I = 0.1;
-
-        private void button3_Click(object sender, EventArgs e)
-        {
-            I += 0.1;
-            NeuralNetwork.Activate(new List<double> { I });
-            NeuralNetwork.Correct(new List<double> { I*I });
-            result_Click(sender, e);
         }
 
         #region OpenGl
@@ -161,11 +113,7 @@ namespace Visualization
             foreach (var agent in GameEnvironment.Agents)
             {
                 DrawAgent(agent);
-
-                if (GameEnvironment.CanMove(agent))
-                {
-                    agent.Move();
-                }
+                agent.Move(GameEnvironment.CanMove(agent));
             }
         }
 
@@ -225,10 +173,15 @@ namespace Visualization
 
         private void Test()
         {
-            GeneticAlgorithm.PerformIteration();
+            for (var i = 0; i < 5; i++)
+            {
+                GeneticAlgorithm.PerformIteration();
+            }
+
             var winner = GeneticAlgorithm.Population.FirstOrDefault(
                 y => y.FittnessValue == GeneticAlgorithm.Population.Max(x => x.FittnessValue));
             var w = winner as NeuroChromosome;
+
             NeuralNetwork.SetNetworkState(w);
         }
     }

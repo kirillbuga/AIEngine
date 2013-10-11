@@ -40,7 +40,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ActivationFunctions.cs" />
-    <Compile Include="IActiovationFunc.cs" />
+    <Compile Include="IActivationFunc.cs" />
     <Compile Include="Layer.cs" />
     <Compile Include="Link.cs" />
     <Compile Include="NeuralNetwork.cs" />

@@ -48,17 +48,32 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CrossoverTests.cs" />
-    <Compile Include="FitnessFunctionTest.cs" />
+    <Compile Include="EngineTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AIEngine\AIEngine.csproj">
+      <Project>{19191465-4803-41c7-a5e9-c14bbabb1c97}</Project>
+      <Name>AIEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{662d75e3-72c9-4681-ba6f-73e51f848367}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GeneticAlgorithm\GeneticAlgorithm.csproj">
       <Project>{f93e85ea-69c5-4f22-968b-9b0eeaff717d}</Project>
       <Name>GeneticAlgorithm</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NeuralNetworkCore\NeuralNetworkCore.csproj">
+      <Project>{c033b198-7f85-44de-8792-87a8850ae242}</Project>
+      <Name>NeuralNetworkCore</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Visualization\Visualization.csproj">
+      <Project>{891af74e-1e74-4bc4-981f-e65737f86229}</Project>
+      <Name>Visualization</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

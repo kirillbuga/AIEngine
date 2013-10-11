@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Common.Entities.Extensions
+namespace GeneticAlgorithm.Extensions
 {
     public static class Extensions
     {
