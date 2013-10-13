@@ -22,7 +22,7 @@ namespace Visualization
         public GameEnvironment GameEnvironment { get; set; }
         public NeuroGeneticAlgorithm GeneticAlgorithm { get; set; }
 
-        private bool _isDebugMode = true;
+        private bool _isDebugMode = false;
 
         public MainForm()
         {
@@ -42,7 +42,7 @@ namespace Visualization
 
             var options = new EnvironmentOptions
             {
-                AgentsCount = 1,
+                AgentsCount = 20,
                 FoodCount = 30,
                 FieldWidth = ant.Width,
                 FieldHeight = ant.Height,
@@ -173,7 +173,7 @@ namespace Visualization
 
         private void Test()
         {
-            for (var i = 0; i < 5; i++)
+            for (var i = 0; i <= 10; i++)
             {
                 GeneticAlgorithm.PerformIteration();
             }

@@ -12,7 +12,7 @@ namespace AIEngine.Entities
         public List<Food> Foods { get; set; }
 
         private Random Random { get; set; }
-        private const int VisibleZone = 5;
+        private const int VisibleZone = 15;
 
         private int Width { get; set; }
         private int Height { get; set; }
@@ -47,8 +47,9 @@ namespace AIEngine.Entities
 
             foreach (var food in Foods)
             {
-                foreach (var agent in Agents)
+                for (int index = 0; index < Agents.Count; index++)
                 {
+                    var agent = Agents[index];
                     if (GetDistance(food.X, food.Y, agent.X, agent.Y) < 15)
                     {
                         harvested.Add(food);

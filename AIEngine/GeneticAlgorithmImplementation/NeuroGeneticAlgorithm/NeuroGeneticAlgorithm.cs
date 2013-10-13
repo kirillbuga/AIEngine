@@ -72,36 +72,35 @@ namespace AIEngine.GeneticAlgorithmImplementation.NeuroGeneticAlgorithm
 
         public override void PerformIteration()
         {
-            for (int i = 0; i < Population.Count; i++)
+            foreach (NeuroChromosome chromosome in Population)
             {
-                TestGameEnvironment.Agents[i] = new EnvironmentAgent(Random.Next(90, 100), Random.Next(90, 100), Random.Next(0, 360),Color.Beige, new NeuralNetwork())
-                    {
-                        HarvestedFood = 1
-                    };
-
-                TestGameEnvironment.Agents[i].Brain.SetNetworkState(Population[i] as NeuroChromosome);
-            }
-
-
-            for (var i = 0; i < 1000; i++)
-            {
-                TestGameEnvironment.CalculateAgentsEnvironmentParameters();
-                TestGameEnvironment.GetHarvestedFood();
-
-                for (int index = 0; index < TestGameEnvironment.Agents.Count; index++)
+                for (int j = 0; j < TestGameEnvironment.Agents.Count; j++)
                 {
-                    var agent = TestGameEnvironment.Agents[index];
-                    if (TestGameEnvironment.CanMove(agent))
+                    TestGameEnvironment.Agents[j] = new EnvironmentAgent(Random.Next(90, 100), Random.Next(90, 100),
+                                                                         Random.Next(0, 360), Color.Beige,
+                                                                         new NeuralNetwork())
+                        {
+                            HarvestedFood = 1
+                        };
+                    TestGameEnvironment.Agents[j].Brain.SetNetworkState(chromosome);
+                }
+
+                for (var i = 0; i < 1000; i++)
+                {
+                    TestGameEnvironment.CalculateAgentsEnvironmentParameters();
+                    TestGameEnvironment.GetHarvestedFood();
+
+                    for (int index = 0; index < TestGameEnvironment.Agents.Count; index++)
                     {
-                        agent.Move();
+                        var agent = TestGameEnvironment.Agents[index];
+                        if (TestGameEnvironment.CanMove(agent))
+                        {
+                            agent.Move();
+                        }
                     }
                 }
-            }
 
-            for (int index = 0; index < Population.Count; index++)
-            {
-                var chromosome = Population[index];
-                chromosome.FittnessValue = TestGameEnvironment.Agents[index].HarvestedFood;
+                chromosome.FittnessValue = TestGameEnvironment.Agents.Sum(x => x.HarvestedFood);
             }
 
             var selection = Selection.Select(Population);
